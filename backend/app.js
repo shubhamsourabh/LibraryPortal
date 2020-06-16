@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose=require('mongoose')
 const bodyParser = require('body-parser')
 const userRoutes = require('./routes/users')
+const cors = require('cors')
 
 
  mongoose.connect('mongodb+srv://shubham:Lucky@123@cluster0-unn4z.mongodb.net/Library_mangement_system?retryWrites=true&w=majority',
@@ -16,10 +17,11 @@ const userRoutes = require('./routes/users')
  });
 
  const app = express()
+ app.use(cors())
 
  app.use(bodyParser.urlencoded({ extended: true }));
  app.use(bodyParser.json());
 
-  app.use('/users',userRoutes);
+  app.use('/api/users',userRoutes);
 
  module.exports = app;
