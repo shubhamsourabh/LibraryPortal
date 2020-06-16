@@ -8,37 +8,37 @@ const Login = () => {
     // To fetch either user exists in local storage
   
     
-    // const handleSubmit = async e => {
-    //   e.preventDefault()
-    //   let user = JSON.stringify({
-    //     email,
-    //     password,
-    //   })
-    //   try {
-    //     const response = await fetch("http://localhost:3000/users/login", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: user,
-    //     })
-    //     const { token } = await response.json()
-    //     console.log(token)
-    //     if (token) {
-    //       localStorage.setItem("token", token)
-    //       alert("Logged In")
-    //      // navigate("/app/dashboard")
-    //     } else {
-    //       alert("User Doens't Exists")
-    //     }
-    //     // localStorage.setItem("token", token)
-    //     // setEmail("")
-    //     // setPassword("")
-    //   } catch (err) {
-    //     console.log(err)
-    //   }
+    const handleSubmit = async e => {
+      e.preventDefault()
+      let user = JSON.stringify({
+        username,
+        password,
+      })
+      try {
+        const response = await fetch("http://localhost:5000/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: user,
+        })
+        const { token } = await response.json()
+        console.log(token)
+        if (token) {
+          localStorage.setItem("token", token)
+          alert("Logged In")
+         // navigate("/app/dashboard")
+        } else {
+          alert("User Doens't Exists")
+        }
+        // localStorage.setItem("token", token)
+         setUsername("")
+         setPassword("")
+      } catch (err) {
+        console.log(err)
+      }
       
-    // }
+    }
   
     return (
       <section className={loginStyles.container}>
@@ -66,7 +66,7 @@ const Login = () => {
             />
             <button
               type="submit"
-              // onClick={handleSubmit}
+               onClick={handleSubmit}
               className={loginStyles.loginBtn}
             >
               Login
