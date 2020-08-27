@@ -18,7 +18,7 @@ mongoose.connect(
   }
 );
 //Hello
-//world
+//World
 const app = express();
 app.use(cors());
 
